@@ -1,2 +1,2 @@
 # jupyterhub-templates
-Templates for JupyterHub
+Templates for JupyterHub running at https://studyhub.co

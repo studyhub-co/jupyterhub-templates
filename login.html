@@ -1,6 +1,1489 @@
 {% extends "page.html" %}
+
+{% block stylesheet %}
+    {{ super() }}
+    <style>
+        #jupyterhub-logo {
+            padding-left: 0px;
+        }
+
+        .navbar-header {
+            position: absolute;
+        }
+
+        .jpy-logo {
+            margin-top: 0px;
+        }
+
+        #login-main {
+            height: 90vh
+        }
+
+        #customBtn {
+            display: inline-block;
+            background: white;
+            color: #444;
+            width: 300px;
+            border-radius: 5px;
+            border: thin solid #888;
+            box-shadow: 0px 3px 3px 1px grey;
+            white-space: nowrap;
+            text-decoration: none !important;
+        }
+
+        #customBtn:hover {
+            text-decoration: none !important;
+            box-shadow: 0px 3px 3px 2px grey;
+            transition: box-shadow .5s;
+        }
+
+        #customBtn:active {
+            text-decoration: none !important;
+            box-shadow: 0px 3px 3px 1px grey;
+            background: #f5f5f5;
+            transition: box-shadow .5s, background .25s;
+        }
+
+        #GoogleIcon {
+            background: url('https://upload.wikimedia.org/wikipedia/commons/5/53/Google_%22G%22_Logo.svg') transparent 5px 50% no-repeat;
+            display: inline-block;
+            vertical-align: middle;
+            width: 68px;
+            height: 64px;
+        }
+
+        #GoogleText {
+            display: inline-block;
+            vertical-align: middle;
+            padding-left: 10px;
+            padding-top: 50px;
+            padding-bottom: 50px;
+            font-size: 24px;
+            font-weight: bold;
+            /* Use the Roboto font that is loaded in the <head> */
+            font-family: 'Roboto', sans-serif;
+        }
+
+
+    </style>
+    <style>
+        /*
+  Theme Name: NewBiz
+  Theme URL: https://bootstrapmade.com/newbiz-bootstrap-business-template/
+  Author: BootstrapMade.com
+  License: https://bootstrapmade.com/license/
+*/
+
+        /*--------------------------------------------------------------
+        # General
+        --------------------------------------------------------------*/
+
+        body {
+            background: #fff;
+            color: #444;
+            font-family: "Open Sans", sans-serif;
+        }
+
+        a {
+            color: #007bff;
+            transition: 0.5s;
+        }
+
+        a:hover,
+        a:active,
+        a:focus {
+            color: #0b6bd3;
+            outline: none;
+            text-decoration: none;
+        }
+
+        p {
+            padding: 0;
+            margin: 0 0 30px 0;
+        }
+
+        h1,
+        h2,
+        h3,
+        h4,
+        h5,
+        h6 {
+            font-family: "Montserrat", sans-serif;
+            font-weight: 400;
+            margin: 0 0 20px 0;
+            padding: 0;
+        }
+
+        /* Back to top button */
+
+        .back-to-top {
+            position: fixed;
+            display: none;
+            background: #007bff;
+            color: #fff;
+            width: 44px;
+            height: 44px;
+            text-align: center;
+            line-height: 1;
+            font-size: 16px;
+            border-radius: 50%;
+            right: 15px;
+            bottom: 15px;
+            transition: background 0.5s;
+            z-index: 11;
+        }
+
+        .back-to-top i {
+            padding-top: 12px;
+            color: #fff;
+        }
+
+        /* Prelaoder */
+
+        #preloader {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            z-index: 9999;
+            overflow: hidden;
+            background: #fff;
+        }
+
+        #preloader:before {
+            content: "";
+            position: fixed;
+            top: calc(50% - 30px);
+            left: calc(50% - 30px);
+            border: 6px solid #f2f2f2;
+            border-top: 6px solid #007bff;
+            border-radius: 50%;
+            width: 60px;
+            height: 60px;
+            -webkit-animation: animate-preloader 1s linear infinite;
+            animation: animate-preloader 1s linear infinite;
+        }
+
+        @-webkit-keyframes animate-preloader {
+            0% {
+                -webkit-transform: rotate(0deg);
+                transform: rotate(0deg);
+            }
+
+            100% {
+                -webkit-transform: rotate(360deg);
+                transform: rotate(360deg);
+            }
+        }
+
+        @keyframes animate-preloader {
+            0% {
+                -webkit-transform: rotate(0deg);
+                transform: rotate(0deg);
+            }
+
+            100% {
+                -webkit-transform: rotate(360deg);
+                transform: rotate(360deg);
+            }
+        }
+
+        /*--------------------------------------------------------------
+        # Header
+        --------------------------------------------------------------*/
+
+        #header {
+            height: 80px;
+            transition: all 0.5s;
+            z-index: 997;
+            transition: all 0.5s;
+            padding: 20px 0;
+            background: #fff;
+            box-shadow: 0px 0px 30px rgba(127, 137, 161, 0.3);
+        }
+
+        #header.header-scrolled,
+        #header.header-pages {
+            height: 60px;
+            padding: 10px 0;
+        }
+
+        #header .logo h1 {
+            font-size: 36px;
+            margin: 0;
+            padding: 0;
+            line-height: 1;
+            font-weight: 400;
+            letter-spacing: 3px;
+            text-transform: uppercase;
+        }
+
+        #header .logo h1 a,
+        #header .logo h1 a:hover {
+            color: #00366f;
+            text-decoration: none;
+        }
+
+        #header .logo img {
+            padding: 0;
+            margin: 7px 0;
+            max-height: 26px;
+        }
+
+        .main-pages {
+            margin-top: 60px;
+        }
+
+        /*--------------------------------------------------------------
+        # Intro Section
+        --------------------------------------------------------------*/
+
+        #intro {
+            width: 100%;
+            position: relative;
+            background: url("https://gitcdn.link/repo/studyhub-co/jupyterhub-templates/master/img/intro-bg.png") center bottom no-repeat;
+            background-size: cover;
+            padding: 200px 0 120px 0;
+        }
+
+        #intro .intro-img {
+            width: 50%;
+            float: right;
+        }
+
+        #intro .intro-info {
+            width: 50%;
+            float: left;
+        }
+
+        #intro .intro-info h2 {
+            color: #fff;
+            margin-bottom: 40px;
+            font-size: 48px;
+            font-weight: 700;
+        }
+
+        #intro .intro-info h2 span {
+            color: #74b5fc;
+            text-decoration: underline;
+        }
+
+        #intro .intro-info .btn-get-started,
+        #intro .intro-info .btn-services {
+            font-family: "Montserrat", sans-serif;
+            font-size: 14px;
+            font-weight: 600;
+            letter-spacing: 1px;
+            display: inline-block;
+            padding: 10px 32px;
+            border-radius: 50px;
+            transition: 0.5s;
+            margin: 0 20px 20px 0;
+            color: #fff;
+        }
+
+        #intro .intro-info .btn-get-started {
+            background: #007bff;
+            border: 2px solid #007bff;
+            color: #fff;
+        }
+
+        #intro .intro-info .btn-get-started:hover {
+            background: none;
+            border-color: #fff;
+            color: #fff;
+        }
+
+        #intro .intro-info .btn-services {
+            border: 2px solid #fff;
+        }
+
+        #intro .intro-info .btn-services:hover {
+            background: #007bff;
+            border-color: #007bff;
+            color: #fff;
+        }
+
+        /*--------------------------------------------------------------
+        # Navigation Menu
+        --------------------------------------------------------------*/
+
+        /* Desktop Navigation */
+
+        .main-nav {
+            /* Drop Down */
+            /* Deep Drop Down */
+        }
+
+        .main-nav,
+        .main-nav * {
+            margin: 0;
+            padding: 0;
+            list-style: none;
+        }
+
+        .main-nav > ul > li {
+            position: relative;
+            white-space: nowrap;
+            float: left;
+        }
+
+        .main-nav a {
+            display: block;
+            position: relative;
+            color: #004289;
+            padding: 10px 15px;
+            transition: 0.3s;
+            font-size: 14px;
+            font-family: "Montserrat", sans-serif;
+            font-weight: 500;
+        }
+
+        .main-nav a:hover,
+        .main-nav .active > a,
+        .main-nav li:hover > a {
+            color: #007bff;
+            text-decoration: none;
+        }
+
+        .main-nav .drop-down ul {
+            display: block;
+            position: absolute;
+            left: 0;
+            top: calc(100% + 30px);
+            z-index: 99;
+            opacity: 0;
+            visibility: hidden;
+            padding: 10px 0;
+            background: #fff;
+            box-shadow: 0px 0px 30px rgba(127, 137, 161, 0.25);
+            transition: ease all 0.3s;
+        }
+
+        .main-nav .drop-down:hover > ul {
+            opacity: 1;
+            top: 100%;
+            visibility: visible;
+        }
+
+        .main-nav .drop-down li {
+            min-width: 180px;
+            position: relative;
+        }
+
+        .main-nav .drop-down ul a {
+            padding: 10px 20px;
+            font-size: 13px;
+            color: #004289;
+        }
+
+        .main-nav .drop-down ul a:hover,
+        .main-nav .drop-down ul .active > a,
+        .main-nav .drop-down ul li:hover > a {
+            color: #007bff;
+        }
+
+        .main-nav .drop-down > a:after {
+            content: "\f107";
+            font-family: FontAwesome;
+            padding-left: 10px;
+        }
+
+        .main-nav .drop-down .drop-down ul {
+            top: 0;
+            left: calc(100% - 30px);
+        }
+
+        .main-nav .drop-down .drop-down:hover > ul {
+            opacity: 1;
+            top: 0;
+            left: 100%;
+        }
+
+        .main-nav .drop-down .drop-down > a {
+            padding-right: 35px;
+        }
+
+        .main-nav .drop-down .drop-down > a:after {
+            content: "\f105";
+            position: absolute;
+            right: 15px;
+        }
+
+        /* Mobile Navigation */
+
+        .mobile-nav {
+            position: fixed;
+            top: 0;
+            bottom: 0;
+            z-index: 9999;
+            overflow-y: auto;
+            left: -260px;
+            width: 260px;
+            padding-top: 18px;
+            background: rgba(19, 39, 57, 0.8);
+            transition: 0.4s;
+        }
+
+        .mobile-nav * {
+            margin: 0;
+            padding: 0;
+            list-style: none;
+        }
+
+        .mobile-nav a {
+            display: block;
+            position: relative;
+            color: #fff;
+            padding: 10px 20px;
+            font-weight: 500;
+        }
+
+        .mobile-nav a:hover,
+        .mobile-nav .active > a,
+        .mobile-nav li:hover > a {
+            color: #74b5fc;
+            text-decoration: none;
+        }
+
+        .mobile-nav .drop-down > a:after {
+            content: "\f078";
+            font-family: FontAwesome;
+            padding-left: 10px;
+            position: absolute;
+            right: 15px;
+        }
+
+        .mobile-nav .active.drop-down > a:after {
+            content: "\f077";
+        }
+
+        .mobile-nav .drop-down > a {
+            padding-right: 35px;
+        }
+
+        .mobile-nav .drop-down ul {
+            display: none;
+            overflow: hidden;
+        }
+
+        .mobile-nav .drop-down li {
+            padding-left: 20px;
+        }
+
+        .mobile-nav-toggle {
+            position: fixed;
+            right: 0;
+            top: 0;
+            z-index: 9998;
+            border: 0;
+            background: none;
+            font-size: 24px;
+            transition: all 0.4s;
+            outline: none !important;
+            line-height: 1;
+            cursor: pointer;
+            text-align: right;
+        }
+
+        .mobile-nav-toggle i {
+            margin: 18px 18px 0 0;
+            color: #004289;
+        }
+
+        .mobile-nav-overly {
+            width: 100%;
+            height: 100%;
+            z-index: 9997;
+            top: 0;
+            left: 0;
+            position: fixed;
+            background: rgba(19, 39, 57, 0.8);
+            overflow: hidden;
+            display: none;
+        }
+
+        .mobile-nav-active {
+            overflow: hidden;
+        }
+
+        .mobile-nav-active .mobile-nav {
+            left: 0;
+        }
+
+        .mobile-nav-active .mobile-nav-toggle i {
+            color: #fff;
+        }
+
+        /*--------------------------------------------------------------
+        # Sections
+        --------------------------------------------------------------*/
+
+        /* Sections Header
+        --------------------------------*/
+
+        .section-header h3 {
+            font-size: 36px;
+            color: #283d50;
+            text-align: center;
+            font-weight: 500;
+            position: relative;
+        }
+
+        .section-header p {
+            text-align: center;
+            margin: auto;
+            font-size: 15px;
+            padding-bottom: 60px;
+            color: #556877;
+            width: 50%;
+        }
+
+        /* Section with background
+        --------------------------------*/
+
+        .section-bg {
+            background: #ecf5ff;
+        }
+
+        /* About Us Section
+        --------------------------------*/
+
+        #about {
+            background: #fff;
+            padding: 60px 0;
+        }
+
+        #about .about-container .background {
+            margin: 20px 0;
+        }
+
+        #about .about-container .content {
+            background: #fff;
+        }
+
+        #about .about-container .title {
+            color: #333;
+            font-weight: 700;
+            font-size: 32px;
+        }
+
+        #about .about-container p {
+            line-height: 26px;
+        }
+
+        #about .about-container p:last-child {
+            margin-bottom: 0;
+        }
+
+        #about .about-container .icon-box {
+            background: #fff;
+            background-size: cover;
+            padding: 0 0 30px 0;
+        }
+
+        #about .about-container .icon-box .icon {
+            float: left;
+            background: #fff;
+            width: 64px;
+            height: 64px;
+            display: -webkit-box;
+            display: -webkit-flex;
+            display: -ms-flexbox;
+            display: flex;
+            -webkit-box-pack: center;
+            -webkit-justify-content: center;
+            -ms-flex-pack: center;
+            justify-content: center;
+            -webkit-box-align: center;
+            -webkit-align-items: center;
+            -ms-flex-align: center;
+            align-items: center;
+            -webkit-box-orient: vertical;
+            -webkit-box-direction: normal;
+            -webkit-flex-direction: column;
+            -ms-flex-direction: column;
+            flex-direction: column;
+            text-align: center;
+            border-radius: 50%;
+            border: 2px solid #007bff;
+            transition: all 0.3s ease-in-out;
+        }
+
+        #about .about-container .icon-box .icon i {
+            color: #007bff;
+            font-size: 24px;
+        }
+
+        #about .about-container .icon-box:hover .icon {
+            background: #007bff;
+        }
+
+        #about .about-container .icon-box:hover .icon i {
+            color: #fff;
+        }
+
+        #about .about-container .icon-box .title {
+            margin-left: 80px;
+            font-weight: 600;
+            margin-bottom: 5px;
+            font-size: 18px;
+        }
+
+        #about .about-container .icon-box .title a {
+            color: #283d50;
+        }
+
+        #about .about-container .icon-box .description {
+            margin-left: 80px;
+            line-height: 24px;
+            font-size: 14px;
+        }
+
+        #about .about-extra {
+            padding-top: 60px;
+        }
+
+        #about .about-extra h4 {
+            font-weight: 600;
+            font-size: 24px;
+        }
+
+        /* Services Section
+        --------------------------------*/
+
+        #services {
+            padding: 60px 0 40px 0;
+            box-shadow: inset 0px 0px 12px 0px rgba(0, 0, 0, 0.1);
+        }
+
+        #services .box {
+            padding: 30px;
+            position: relative;
+            overflow: hidden;
+            border-radius: 10px;
+            margin: 0 10px 40px 10px;
+            background: #fff;
+            box-shadow: 0 10px 29px 0 rgba(68, 88, 144, 0.1);
+            transition: all 0.3s ease-in-out;
+        }
+
+        #services .box:hover {
+            -webkit-transform: translateY(-5px);
+            transform: translateY(-5px);
+        }
+
+        #services .icon {
+            position: absolute;
+            left: -10px;
+            top: calc(50% - 32px);
+        }
+
+        #services .icon i {
+            font-size: 64px;
+            line-height: 1;
+            transition: 0.5s;
+        }
+
+        #services .title {
+            margin-left: 40px;
+            font-weight: 700;
+            margin-bottom: 15px;
+            font-size: 18px;
+        }
+
+        #services .title a {
+            color: #111;
+        }
+
+        #services .box:hover .title a {
+            color: #007bff;
+        }
+
+        #services .description {
+            font-size: 14px;
+            margin-left: 40px;
+            line-height: 24px;
+            margin-bottom: 0;
+        }
+
+        #why-us {
+            padding: 60px 0;
+            background: #004a99;
+        }
+
+        #why-us .section-header h3,
+        #why-us .section-header p {
+            color: #fff;
+        }
+
+        #why-us .card {
+            background: #00458f;
+            border-color: #00458f;
+            border-radius: 10px;
+            margin: 0 15px;
+            padding: 15px 0;
+            text-align: center;
+            color: #fff;
+            transition: 0.3s ease-in-out;
+            height: 100%;
+        }
+
+        #why-us .card:hover {
+            background: #003b7a;
+            border-color: #003b7a;
+        }
+
+        #why-us .card i {
+            font-size: 48px;
+            padding-top: 15px;
+            color: #bfddfe;
+        }
+
+        #why-us .card h5 {
+            font-size: 22px;
+            font-weight: 600;
+        }
+
+        #why-us .card p {
+            font-size: 15px;
+            color: #d8eafe;
+        }
+
+        #why-us .card .readmore {
+            color: #fff;
+            font-weight: 600;
+            display: inline-block;
+            transition: 0.3s ease-in-out;
+            border-bottom: #00458f solid 2px;
+        }
+
+        #why-us .card .readmore:hover {
+            border-bottom: #fff solid 2px;
+        }
+
+        #why-us .counters {
+            padding-top: 40px;
+        }
+
+        #why-us .counters span {
+            font-family: "Montserrat", sans-serif;
+            font-weight: bold;
+            font-size: 48px;
+            display: block;
+            color: #fff;
+        }
+
+        #why-us .counters p {
+            padding: 0;
+            margin: 0 0 20px 0;
+            font-family: "Montserrat", sans-serif;
+            font-size: 14px;
+            color: #cce5ff;
+        }
+
+        /* Portfolio Section
+        --------------------------------*/
+
+        #portfolio {
+            padding: 60px 0;
+            box-shadow: 0px 0px 12px 0px rgba(0, 0, 0, 0.1);
+        }
+
+        #portfolio #portfolio-flters {
+            padding: 0;
+            margin: 5px 0 35px 0;
+            list-style: none;
+            text-align: center;
+        }
+
+        #portfolio #portfolio-flters li {
+            cursor: pointer;
+            margin: 15px 15px 15px 0;
+            display: inline-block;
+            padding: 6px 20px;
+            font-size: 12px;
+            line-height: 20px;
+            color: #007bff;
+            border-radius: 50px;
+            text-transform: uppercase;
+            background: #ecf5ff;
+            margin-bottom: 5px;
+            transition: all 0.3s ease-in-out;
+        }
+
+        #portfolio #portfolio-flters li:hover,
+        #portfolio #portfolio-flters li.filter-active {
+            background: #007bff;
+            color: #fff;
+        }
+
+        #portfolio #portfolio-flters li:last-child {
+            margin-right: 0;
+        }
+
+        #portfolio .portfolio-item {
+            position: relative;
+            overflow: hidden;
+            margin-bottom: 30px;
+        }
+
+        #portfolio .portfolio-item .portfolio-wrap {
+            overflow: hidden;
+            position: relative;
+            border-radius: 6px;
+            margin: 0;
+        }
+
+        #portfolio .portfolio-item .portfolio-wrap:hover img {
+            opacity: 0.4;
+            transition: 0.3s;
+        }
+
+        #portfolio .portfolio-item .portfolio-wrap .portfolio-info {
+            position: absolute;
+            top: 0;
+            right: 0;
+            bottom: 0;
+            left: 0;
+            display: -webkit-box;
+            display: -webkit-flex;
+            display: -ms-flexbox;
+            display: flex;
+            -webkit-box-pack: center;
+            -webkit-justify-content: center;
+            -ms-flex-pack: center;
+            justify-content: center;
+            -webkit-box-align: center;
+            -webkit-align-items: center;
+            -ms-flex-align: center;
+            align-items: center;
+            -webkit-box-orient: vertical;
+            -webkit-box-direction: normal;
+            -webkit-flex-direction: column;
+            -ms-flex-direction: column;
+            flex-direction: column;
+            text-align: center;
+            opacity: 0;
+            transition: 0.2s linear;
+        }
+
+        #portfolio .portfolio-item .portfolio-wrap .portfolio-info h4 {
+            font-size: 22px;
+            line-height: 1px;
+            font-weight: 700;
+            margin-bottom: 14px;
+            padding-bottom: 0;
+        }
+
+        #portfolio .portfolio-item .portfolio-wrap .portfolio-info h4 a {
+            color: #fff;
+        }
+
+        #portfolio .portfolio-item .portfolio-wrap .portfolio-info h4 a:hover {
+            color: #007bff;
+        }
+
+        #portfolio .portfolio-item .portfolio-wrap .portfolio-info p {
+            padding: 0;
+            margin: 0;
+            color: #e2effe;
+            font-weight: 500;
+            font-size: 14px;
+            text-transform: uppercase;
+        }
+
+        #portfolio .portfolio-item .portfolio-wrap .portfolio-info .link-preview,
+        #portfolio .portfolio-item .portfolio-wrap .portfolio-info .link-details {
+            display: inline-block;
+            line-height: 1;
+            text-align: center;
+            width: 36px;
+            height: 36px;
+            background: #007bff;
+            border-radius: 50%;
+            margin: 10px 4px 0 4px;
+        }
+
+        #portfolio .portfolio-item .portfolio-wrap .portfolio-info .link-preview i,
+        #portfolio .portfolio-item .portfolio-wrap .portfolio-info .link-details i {
+            padding-top: 6px;
+            font-size: 22px;
+            color: #fff;
+        }
+
+        #portfolio .portfolio-item .portfolio-wrap .portfolio-info .link-preview:hover,
+        #portfolio .portfolio-item .portfolio-wrap .portfolio-info .link-details:hover {
+            background: #3395ff;
+        }
+
+        #portfolio .portfolio-item .portfolio-wrap .portfolio-info .link-preview:hover i,
+        #portfolio .portfolio-item .portfolio-wrap .portfolio-info .link-details:hover i {
+            color: #fff;
+        }
+
+        #portfolio .portfolio-item .portfolio-wrap:hover {
+            background: #003166;
+        }
+
+        #portfolio .portfolio-item .portfolio-wrap:hover .portfolio-info {
+            opacity: 1;
+        }
+
+        /* Testimonials Section
+        --------------------------------*/
+
+        #testimonials {
+            padding: 60px 0;
+            box-shadow: inset 0px 0px 12px 0px rgba(0, 0, 0, 0.1);
+        }
+
+        #testimonials .section-header {
+            margin-bottom: 40px;
+        }
+
+        #testimonials .testimonial-item .testimonial-img {
+            width: 120px;
+            border-radius: 50%;
+            border: 4px solid #fff;
+            float: left;
+        }
+
+        #testimonials .testimonial-item h3 {
+            font-size: 20px;
+            font-weight: bold;
+            margin: 10px 0 5px 0;
+            color: #111;
+            margin-left: 140px;
+        }
+
+        #testimonials .testimonial-item h4 {
+            font-size: 14px;
+            color: #999;
+            margin: 0 0 15px 0;
+            margin-left: 140px;
+        }
+
+        #testimonials .testimonial-item p {
+            font-style: italic;
+            margin: 0 0 15px 140px;
+        }
+
+        #testimonials .owl-nav,
+        #testimonials .owl-dots {
+            margin-top: 5px;
+            text-align: center;
+        }
+
+        #testimonials .owl-dot {
+            display: inline-block;
+            margin: 0 5px;
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+            background-color: #ddd;
+        }
+
+        #testimonials .owl-dot.active {
+            background-color: #007bff;
+        }
+
+        /* Team Section
+        --------------------------------*/
+
+        #team {
+            background: #fff;
+            padding: 60px 0;
+            box-shadow: 0px 0px 12px 0px rgba(0, 0, 0, 0.1);
+        }
+
+        #team .member {
+            text-align: center;
+            margin-bottom: 20px;
+            position: relative;
+            border-radius: 50%;
+            overflow: hidden;
+        }
+
+        #team .member .member-info {
+            opacity: 0;
+            display: -webkit-box;
+            display: -webkit-flex;
+            display: -ms-flexbox;
+            display: flex;
+            -webkit-box-pack: center;
+            -webkit-justify-content: center;
+            -ms-flex-pack: center;
+            justify-content: center;
+            -webkit-box-align: center;
+            -webkit-align-items: center;
+            -ms-flex-align: center;
+            align-items: center;
+            position: absolute;
+            bottom: 0;
+            top: 0;
+            left: 0;
+            right: 0;
+            transition: 0.2s;
+        }
+
+        #team .member .member-info-content {
+            margin-top: 50px;
+            transition: margin 0.2s;
+        }
+
+        #team .member:hover .member-info {
+            background: rgba(0, 62, 128, 0.7);
+            opacity: 1;
+            transition: 0.4s;
+        }
+
+        #team .member:hover .member-info-content {
+            margin-top: 0;
+            transition: margin 0.4s;
+        }
+
+        #team .member h4 {
+            font-weight: 700;
+            margin-bottom: 2px;
+            font-size: 18px;
+            color: #fff;
+        }
+
+        #team .member span {
+            font-style: italic;
+            display: block;
+            font-size: 13px;
+            color: #fff;
+        }
+
+        #team .member .social {
+            margin-top: 15px;
+        }
+
+        #team .member .social a {
+            transition: none;
+            color: #fff;
+        }
+
+        #team .member .social a:hover {
+            color: #007bff;
+        }
+
+        #team .member .social i {
+            font-size: 18px;
+            margin: 0 2px;
+        }
+
+        /* Clients Section
+        --------------------------------*/
+
+        #clients {
+            padding: 60px 0;
+            box-shadow: inset 0px 0px 12px 0px rgba(0, 0, 0, 0.1);
+        }
+
+        #clients .clients-wrap {
+            border-top: 1px solid #d6eaff;
+            border-left: 1px solid #d6eaff;
+            margin-bottom: 30px;
+        }
+
+        #clients .client-logo {
+            padding: 64px;
+            display: -webkit-box;
+            display: -webkit-flex;
+            display: -ms-flexbox;
+            display: flex;
+            -webkit-box-pack: center;
+            -webkit-justify-content: center;
+            -ms-flex-pack: center;
+            justify-content: center;
+            -webkit-box-align: center;
+            -webkit-align-items: center;
+            -ms-flex-align: center;
+            align-items: center;
+            border-right: 1px solid #d6eaff;
+            border-bottom: 1px solid #d6eaff;
+            overflow: hidden;
+            background: #fff;
+            height: 160px;
+        }
+
+        #clients .client-logo:hover img {
+            -webkit-transform: scale(1.2);
+            transform: scale(1.2);
+        }
+
+        #clients img {
+            transition: all 0.4s ease-in-out;
+        }
+
+        /* Contact Section
+        --------------------------------*/
+
+        #contact {
+            box-shadow: 0px 0px 12px 0px rgba(0, 0, 0, 0.1);
+            padding: 60px 0;
+            overflow: hidden;
+        }
+
+        #contact .section-header {
+            padding-bottom: 30px;
+        }
+
+        #contact .contact-about h3 {
+            font-size: 36px;
+            margin: 0 0 10px 0;
+            padding: 0;
+            line-height: 1;
+            font-family: "Montserrat", sans-serif;
+            font-weight: 300;
+            letter-spacing: 3px;
+            text-transform: uppercase;
+            color: #007bff;
+        }
+
+        #contact .contact-about p {
+            font-size: 14px;
+            line-height: 24px;
+            font-family: "Montserrat", sans-serif;
+            color: #888;
+        }
+
+        #contact .social-links {
+            padding-bottom: 20px;
+        }
+
+        #contact .social-links a {
+            font-size: 18px;
+            display: inline-block;
+            background: #fff;
+            color: #007bff;
+            line-height: 1;
+            padding: 8px 0;
+            margin-right: 4px;
+            border-radius: 50%;
+            text-align: center;
+            width: 36px;
+            height: 36px;
+            transition: 0.3s;
+            border: 1px solid #007bff;
+        }
+
+        #contact .social-links a:hover {
+            background: #007bff;
+            color: #fff;
+        }
+
+        #contact .info {
+            color: #283d50;
+        }
+
+        #contact .info i {
+            font-size: 32px;
+            color: #007bff;
+            float: left;
+            line-height: 1;
+        }
+
+        #contact .info p {
+            padding: 0 0 10px 36px;
+            line-height: 28px;
+            font-size: 14px;
+        }
+
+        #contact .form #sendmessage {
+            color: #007bff;
+            border: 1px solid #007bff;
+            display: none;
+            text-align: center;
+            padding: 15px;
+            font-weight: 600;
+            margin-bottom: 15px;
+        }
+
+        #contact .form #errormessage {
+            color: red;
+            display: none;
+            border: 1px solid red;
+            text-align: center;
+            padding: 15px;
+            font-weight: 600;
+            margin-bottom: 15px;
+        }
+
+        #contact .form #sendmessage.show,
+        #contact .form #errormessage.show,
+        #contact .form .show {
+            display: block;
+        }
+
+        #contact .form .validation {
+            color: red;
+            display: none;
+            margin: 0 0 20px;
+            font-weight: 400;
+            font-size: 13px;
+        }
+
+        #contact .form input,
+        #contact .form textarea {
+            border-radius: 0;
+            box-shadow: none;
+            font-size: 14px;
+        }
+
+        #contact .form button[type="submit"] {
+            background: #007bff;
+            border: 0;
+            border-radius: 20px;
+            padding: 8px 30px;
+            color: #fff;
+            transition: 0.3s;
+        }
+
+        #contact .form button[type="submit"]:hover {
+            background: #0067d5;
+            cursor: pointer;
+        }
+
+        /*--------------------------------------------------------------
+        # Footer
+        --------------------------------------------------------------*/
+
+        #footer {
+            background: #00428a;
+            padding: 0 0 30px 0;
+            color: #eee;
+            font-size: 14px;
+        }
+
+        #footer .footer-top {
+            background: #004a99;
+            padding: 60px 0 30px 0;
+        }
+
+        #footer .footer-top .footer-info {
+            margin-bottom: 30px;
+        }
+
+        #footer .footer-top .footer-info h3 {
+            font-size: 34px;
+            margin: 0 0 20px 0;
+            padding: 2px 0 2px 0;
+            line-height: 1;
+            font-family: "Montserrat", sans-serif;
+            color: #fff;
+            font-weight: 400;
+            letter-spacing: 3px;
+            text-transform: uppercase;
+        }
+
+        #footer .footer-top .footer-info p {
+            font-size: 13px;
+            line-height: 24px;
+            margin-bottom: 0;
+            font-family: "Montserrat", sans-serif;
+            color: #ecf5ff;
+        }
+
+        #footer .footer-top .social-links a {
+            font-size: 18px;
+            display: inline-block;
+            background: #007bff;
+            color: #fff;
+            line-height: 1;
+            padding: 8px 0;
+            margin-right: 4px;
+            border-radius: 50%;
+            text-align: center;
+            width: 36px;
+            height: 36px;
+            transition: 0.3s;
+        }
+
+        #footer .footer-top .social-links a:hover {
+            background: #0067d5;
+            color: #fff;
+        }
+
+        #footer .footer-top h4 {
+            font-size: 14px;
+            font-weight: bold;
+            color: #fff;
+            text-transform: uppercase;
+            position: relative;
+            padding-bottom: 10px;
+        }
+
+        #footer .footer-top .footer-links {
+            margin-bottom: 30px;
+        }
+
+        #footer .footer-top .footer-links ul {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+
+        #footer .footer-top .footer-links ul li {
+            padding: 8px 0;
+        }
+
+        #footer .footer-top .footer-links ul li:first-child {
+            padding-top: 0;
+        }
+
+        #footer .footer-top .footer-links ul a {
+            color: #ecf5ff;
+        }
+
+        #footer .footer-top .footer-links ul a:hover {
+            color: #74b5fc;
+        }
+
+        #footer .footer-top .footer-contact {
+            margin-bottom: 30px;
+        }
+
+        #footer .footer-top .footer-contact p {
+            line-height: 26px;
+        }
+
+        #footer .footer-top .footer-newsletter {
+            margin-bottom: 30px;
+        }
+
+        #footer .footer-top .footer-newsletter input[type="email"] {
+            border: 0;
+            padding: 6px 8px;
+            width: 65%;
+        }
+
+        #footer .footer-top .footer-newsletter input[type="submit"] {
+            background: #007bff;
+            border: 0;
+            width: 35%;
+            padding: 6px 0;
+            text-align: center;
+            color: #fff;
+            transition: 0.3s;
+            cursor: pointer;
+        }
+
+        #footer .footer-top .footer-newsletter input[type="submit"]:hover {
+            background: #0062cc;
+        }
+
+        #footer .copyright {
+            text-align: center;
+            padding-top: 30px;
+        }
+
+        #footer .credits {
+            text-align: center;
+            font-size: 13px;
+            color: #f1f7ff;
+        }
+
+        #footer .credits a {
+            color: #bfddfe;
+        }
+
+        #footer .credits a:hover {
+            color: #f1f7ff;
+        }
+
+        /*--------------------------------------------------------------
+        # Responsive Media Queries
+        --------------------------------------------------------------*/
+
+        @media (min-width: 992px) {
+            #testimonials .testimonial-item p {
+                width: 80%;
+            }
+        }
+
+        @media (max-width: 991px) {
+            #header {
+                height: 60px;
+                padding: 10px 0;
+            }
+
+            #header .logo h1 {
+                font-size: 28px;
+                padding: 8px 0;
+            }
+
+            #intro {
+                padding: 140px 0 60px 0;
+            }
+
+            #intro .intro-img {
+                width: 80%;
+                float: none;
+                margin: 0 auto 25px auto;
+            }
+
+            #intro .intro-info {
+                width: 80%;
+                float: none;
+                margin: auto;
+                text-align: center;
+            }
+
+            #why-us .card {
+                margin: 0;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .back-to-top {
+                bottom: 15px;
+            }
+        }
+
+        @media (max-width: 767px) {
+            #intro .intro-info {
+                width: 100%;
+            }
+
+            #intro .intro-info h2 {
+                font-size: 34px;
+                margin-bottom: 30px;
+            }
+
+            .section-header p {
+                width: 100%;
+            }
+
+            #testimonials .testimonial-item {
+                text-align: center;
+            }
+
+            #testimonials .testimonial-item .testimonial-img {
+                float: none;
+                margin: auto;
+            }
+
+            #testimonials .testimonial-item h3,
+            #testimonials .testimonial-item h4,
+            #testimonials .testimonial-item p {
+                margin-left: 0;
+            }
+        }
+
+        @media (max-width: 574px) {
+            #intro {
+                padding: 100px 0 20px 0;
+            }
+        }
+    </style>
+{% endblock %}
 {% if announcement_login %}
-  {% set announcement = announcement_login %}
+    {% set announcement = announcement_login %}
 {% endif %}
 
 {% block login_widget %}
@@ -8,79 +1491,1058 @@
 
 {% block main %}
 
-{% block login %}
-<div id="login-main" class="container">
-{% if custom_html %}
-{{ custom_html | safe }}
-{% elif login_service %}
+    {% block login %}
+        <div id="login-main" class="container">
+            {% if custom_html %}
+                {{ custom_html | safe }}
+            {% elif login_service %}
 
-<div class="service-login">
-  <a role="button"  href='{{authenticator_login_url}}' id="customBtn">
-    <span id="GoogleIcon"></span>
-      <span id="GoogleText">Sign in with Google</span>
-  </a>
-</div>
-{% else %}
-<form action="{{login_url}}?next={{next}}" method="post" role="form">
-  <div class="auth-form-header">
-    Sign in
-  </div>
-  <div class='auth-form-body'>
+                <div class="service-login">
+                    <a role="button" href='{{ authenticator_login_url }}' id="customBtn">
+                        <span id="GoogleIcon"></span>
+                        <span id="GoogleText">Sign in with Google</span>
+                    </a>
+                </div>
+            {% else %}
+                <form action="{{ login_url }}?next={{ next }}" method="post" role="form">
+                    <div class="auth-form-header">
+                        Sign in
+                    </div>
+                    <div class='auth-form-body'>
 
-    <p id='insecure-login-warning' class='hidden'>
-    Warning: JupyterHub seems to be served over an unsecured HTTP connection.
-    We strongly recommend enabling HTTPS for JupyterHub.
-    </p>
+                        <p id='insecure-login-warning' class='hidden'>
+                            Warning: JupyterHub seems to be served over an unsecured HTTP connection.
+                            We strongly recommend enabling HTTPS for JupyterHub.
+                        </p>
 
-    {% if login_error %}
-    <p class="login_error">
-      {{login_error}}
-    </p>
-    {% endif %}
-    <label for="username_input">Username:</label>
-    <input
-      id="username_input"
-      type="text"
-      autocapitalize="off"
-      autocorrect="off"
-      class="form-control"
-      name="username"
-      val="{{username}}"
-      tabindex="1"
-      autofocus="autofocus"
-    />
-    <label for='password_input'>Password:</label>
-    <input
-      type="password"
-      class="form-control"
-      name="password"
-      id="password_input"
-      tabindex="2"
-    />
+                        {% if login_error %}
+                            <p class="login_error">
+                                {{ login_error }}
+                            </p>
+                        {% endif %}
+                        <label for="username_input">Username:</label>
+                        <input
+                                id="username_input"
+                                type="text"
+                                autocapitalize="off"
+                                autocorrect="off"
+                                class="form-control"
+                                name="username"
+                                val="{{ username }}"
+                                tabindex="1"
+                                autofocus="autofocus"
+                        />
+                        <label for='password_input'>Password:</label>
+                        <input
+                                type="password"
+                                class="form-control"
+                                name="password"
+                                id="password_input"
+                                tabindex="2"
+                        />
 
-    <input
-      type="submit"
-      id="login_submit"
-      class='btn btn-jupyter'
-      value='Sign In'
-      tabindex="3"
-    />
-  </div>
-</form>
-{% endif %}
-</div>
-{% endblock login %}
+                        <input
+                                type="submit"
+                                id="login_submit"
+                                class='btn btn-jupyter'
+                                value='Sign In'
+                                tabindex="3"
+                        />
+                    </div>
+                </form>
+            {% endif %}
+        </div>
+    {% endblock login %}
+    <div id="info">
+        <section id="intro" class="clearfix">
+            <div class="container">
 
+                <div class="intro-img">
+                    <img src="https://gitcdn.link/repo/studyhub-co/jupyterhub-templates/master/img/intro-img.svg" alt=""
+                         class="img-fluid">
+                </div>
+
+                <div class="intro-info">
+                    <h2>We provide<br><span>solutions</span><br>for your business!</h2>
+                    <div>
+                        <a href="#about" class="btn-get-started scrollto">Get Started</a>
+                        <a href="#services" class="btn-services scrollto">Our Services</a>
+                    </div>
+                </div>
+
+            </div>
+        </section><!-- #intro -->
+
+        <main id="main">
+
+            <!--==========================
+              About Us Section
+            ============================-->
+            <section id="about">
+                <div class="container">
+
+                    <header class="section-header">
+                        <h3>About Us</h3>
+                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut
+                            labore et dolore magna aliqua.</p>
+                    </header>
+
+                    <div class="row about-container">
+
+                        <div class="col-lg-6 content order-lg-1 order-2">
+                            <p>
+                                Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor
+                                incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud
+                                exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
+                            </p>
+
+                            <div class="icon-box wow fadeInUp">
+                                <div class="icon"><i class="fa fa-shopping-bag"></i></div>
+                                <h4 class="title"><a href="">Eiusmod Tempor</a></h4>
+                                <p class="description">Et harum quidem rerum facilis est et expedita distinctio. Nam
+                                    libero tempore, cum soluta nobis est eligendi</p>
+                            </div>
+
+                            <div class="icon-box wow fadeInUp" data-wow-delay="0.2s">
+                                <div class="icon"><i class="fa fa-photo"></i></div>
+                                <h4 class="title"><a href="">Magni Dolores</a></h4>
+                                <p class="description">Excepteur sint occaecat cupidatat non proident, sunt in culpa qui
+                                    officia deserunt mollit anim id est laborum</p>
+                            </div>
+
+                            <div class="icon-box wow fadeInUp" data-wow-delay="0.4s">
+                                <div class="icon"><i class="fa fa-bar-chart"></i></div>
+                                <h4 class="title"><a href="">Dolor Sitema</a></h4>
+                                <p class="description">Minim veniam, quis nostrud exercitation ullamco laboris nisi ut
+                                    aliquip ex ea commodo consequat tarad limino ata</p>
+                            </div>
+
+                        </div>
+
+                        <div class="col-lg-6 background order-lg-2 order-1 wow fadeInUp">
+                            <img src="https://gitcdn.link/repo/studyhub-co/jupyterhub-templates/master/img/about-img.svg"
+                                 class="img-fluid" alt="">
+                        </div>
+                    </div>
+
+                    <div class="row about-extra">
+                        <div class="col-lg-6 wow fadeInUp">
+                            <img src="https://gitcdn.link/repo/studyhub-co/jupyterhub-templates/master/img/about-extra-1.svg"
+                                 class="img-fluid" alt="">
+                        </div>
+                        <div class="col-lg-6 wow fadeInUp pt-5 pt-lg-0">
+                            <h4>Voluptatem dignissimos provident quasi corporis voluptates sit assumenda.</h4>
+                            <p>
+                                Ipsum in aspernatur ut possimus sint. Quia omnis est occaecati possimus ea. Quas
+                                molestiae perspiciatis occaecati qui rerum. Deleniti quod porro sed quisquam saepe.
+                                Numquam mollitia recusandae non ad at et a.
+                            </p>
+                            <p>
+                                Ad vitae recusandae odit possimus. Quaerat cum ipsum corrupti. Odit qui asperiores ea
+                                corporis deserunt veritatis quidem expedita perferendis. Qui rerum eligendi ex doloribus
+                                quia sit. Porro rerum eum eum.
+                            </p>
+                        </div>
+                    </div>
+
+                    <div class="row about-extra">
+                        <div class="col-lg-6 wow fadeInUp order-1 order-lg-2">
+                            <img src="https://gitcdn.link/repo/studyhub-co/jupyterhub-templates/master/img/about-extra-2.svg"
+                                 class="img-fluid" alt="">
+                        </div>
+
+                        <div class="col-lg-6 wow fadeInUp pt-4 pt-lg-0 order-2 order-lg-1">
+                            <h4>Neque saepe temporibus repellat ea ipsum et. Id vel et quia tempora facere
+                                reprehenderit.</h4>
+                            <p>
+                                Delectus alias ut incidunt delectus nam placeat in consequatur. Sed cupiditate quia ea
+                                quis. Voluptas nemo qui aut distinctio. Cumque fugit earum est quam officiis numquam.
+                                Ducimus corporis autem at blanditiis beatae incidunt sunt.
+                            </p>
+                            <p>
+                                Voluptas saepe natus quidem blanditiis. Non sunt impedit voluptas mollitia beatae. Qui
+                                esse molestias. Laudantium libero nisi vitae debitis. Dolorem cupiditate est perferendis
+                                iusto.
+                            </p>
+                            <p>
+                                Eum quia in. Magni quas ipsum a. Quis ex voluptatem inventore sint quia modi. Numquam
+                                est aut fuga mollitia exercitationem nam accusantium provident quia.
+                            </p>
+                        </div>
+
+                    </div>
+
+                </div>
+            </section><!-- #about -->
+
+            <!--==========================
+              Services Section
+            ============================-->
+            <section id="services" class="section-bg">
+                <div class="container">
+
+                    <header class="section-header">
+                        <h3>Services</h3>
+                        <p>Laudem latine persequeris id sed, ex fabulas delectus quo. No vel partiendo abhorreant
+                            vituperatoribus.</p>
+                    </header>
+
+                    <div class="row">
+
+                        <div class="col-md-6 col-lg-5 offset-lg-1 wow bounceInUp" data-wow-duration="1.4s">
+                            <div class="box">
+                                <div class="icon"><i class="ion-ios-analytics-outline" style="color: #ff689b;"></i>
+                                </div>
+                                <h4 class="title"><a href="">Lorem Ipsum</a></h4>
+                                <p class="description">Voluptatum deleniti atque corrupti quos dolores et quas molestias
+                                    excepturi sint occaecati cupiditate non provident</p>
+                            </div>
+                        </div>
+                        <div class="col-md-6 col-lg-5 wow bounceInUp" data-wow-duration="1.4s">
+                            <div class="box">
+                                <div class="icon"><i class="ion-ios-bookmarks-outline" style="color: #e9bf06;"></i>
+                                </div>
+                                <h4 class="title"><a href="">Dolor Sitema</a></h4>
+                                <p class="description">Minim veniam, quis nostrud exercitation ullamco laboris nisi ut
+                                    aliquip ex ea commodo consequat tarad limino ata</p>
+                            </div>
+                        </div>
+
+                        <div class="col-md-6 col-lg-5 offset-lg-1 wow bounceInUp" data-wow-delay="0.1s"
+                             data-wow-duration="1.4s">
+                            <div class="box">
+                                <div class="icon"><i class="ion-ios-paper-outline" style="color: #3fcdc7;"></i></div>
+                                <h4 class="title"><a href="">Sed ut perspiciatis</a></h4>
+                                <p class="description">Duis aute irure dolor in reprehenderit in voluptate velit esse
+                                    cillum dolore eu fugiat nulla pariatur</p>
+                            </div>
+                        </div>
+                        <div class="col-md-6 col-lg-5 wow bounceInUp" data-wow-delay="0.1s" data-wow-duration="1.4s">
+                            <div class="box">
+                                <div class="icon"><i class="ion-ios-speedometer-outline" style="color:#41cf2e;"></i>
+                                </div>
+                                <h4 class="title"><a href="">Magni Dolores</a></h4>
+                                <p class="description">Excepteur sint occaecat cupidatat non proident, sunt in culpa qui
+                                    officia deserunt mollit anim id est laborum</p>
+                            </div>
+                        </div>
+
+                        <div class="col-md-6 col-lg-5 offset-lg-1 wow bounceInUp" data-wow-delay="0.2s"
+                             data-wow-duration="1.4s">
+                            <div class="box">
+                                <div class="icon"><i class="ion-ios-world-outline" style="color: #d6ff22;"></i></div>
+                                <h4 class="title"><a href="">Nemo Enim</a></h4>
+                                <p class="description">At vero eos et accusamus et iusto odio dignissimos ducimus qui
+                                    blanditiis praesentium voluptatum deleniti atque</p>
+                            </div>
+                        </div>
+                        <div class="col-md-6 col-lg-5 wow bounceInUp" data-wow-delay="0.2s" data-wow-duration="1.4s">
+                            <div class="box">
+                                <div class="icon"><i class="ion-ios-clock-outline" style="color: #4680ff;"></i></div>
+                                <h4 class="title"><a href="">Eiusmod Tempor</a></h4>
+                                <p class="description">Et harum quidem rerum facilis est et expedita distinctio. Nam
+                                    libero tempore, cum soluta nobis est eligendi</p>
+                            </div>
+                        </div>
+
+                    </div>
+
+                </div>
+            </section><!-- #services -->
+
+            <!--==========================
+              Why Us Section
+            ============================-->
+            <section id="why-us" class="wow fadeIn">
+                <div class="container">
+                    <header class="section-header">
+                        <h3>Why choose us?</h3>
+                        <p>Laudem latine persequeris id sed, ex fabulas delectus quo. No vel partiendo abhorreant
+                            vituperatoribus.</p>
+                    </header>
+
+                    <div class="row row-eq-height justify-content-center">
+
+                        <div class="col-lg-4 mb-4">
+                            <div class="card wow bounceInUp">
+                                <i class="fa fa-diamond"></i>
+                                <div class="card-body">
+                                    <h5 class="card-title">Corporis dolorem</h5>
+                                    <p class="card-text">Deleniti optio et nisi dolorem debitis. Aliquam nobis est
+                                        temporibus sunt ab inventore officiis aut voluptatibus.</p>
+                                    <a href="#" class="readmore">Read more </a>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="col-lg-4 mb-4">
+                            <div class="card wow bounceInUp">
+                                <i class="fa fa-language"></i>
+                                <div class="card-body">
+                                    <h5 class="card-title">Voluptates dolores</h5>
+                                    <p class="card-text">Voluptates nihil et quis omnis et eaque omnis sint aut. Ducimus
+                                        dolorum aspernatur.</p>
+                                    <a href="#" class="readmore">Read more </a>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="col-lg-4 mb-4">
+                            <div class="card wow bounceInUp">
+                                <i class="fa fa-object-group"></i>
+                                <div class="card-body">
+                                    <h5 class="card-title">Eum ut aspernatur</h5>
+                                    <p class="card-text">Autem quod nesciunt eos ea aut amet laboriosam ab. Eos quis
+                                        porro in non nemo ex. </p>
+                                    <a href="#" class="readmore">Read more </a>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+
+                    <div class="row counters">
+
+                        <div class="col-lg-3 col-6 text-center">
+                            <span data-toggle="counter-up">274</span>
+                            <p>Clients</p>
+                        </div>
+
+                        <div class="col-lg-3 col-6 text-center">
+                            <span data-toggle="counter-up">421</span>
+                            <p>Projects</p>
+                        </div>
+
+                        <div class="col-lg-3 col-6 text-center">
+                            <span data-toggle="counter-up">1,364</span>
+                            <p>Hours Of Support</p>
+                        </div>
+
+                        <div class="col-lg-3 col-6 text-center">
+                            <span data-toggle="counter-up">18</span>
+                            <p>Hard Workers</p>
+                        </div>
+
+                    </div>
+
+                </div>
+            </section>
+
+            <!--==========================
+              Portfolio Section
+            ============================-->
+            <section id="portfolio" class="clearfix">
+                <div class="container">
+
+                    <header class="section-header">
+                        <h3 class="section-title">Our Portfolio</h3>
+                    </header>
+
+                    <div class="row">
+                        <div class="col-lg-12">
+                            <ul id="portfolio-flters">
+                                <li data-filter="*" class="filter-active">All</li>
+                                <li data-filter=".filter-app">App</li>
+                                <li data-filter=".filter-card">Card</li>
+                                <li data-filter=".filter-web">Web</li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <div class="row portfolio-container">
+
+                        <div class="col-lg-4 col-md-6 portfolio-item filter-app">
+                            <div class="portfolio-wrap">
+                                <img src="https://gitcdn.link/repo/studyhub-co/jupyterhub-templates/master/img/portfolio/app1.jpg"
+                                     class="img-fluid" alt="">
+                                <div class="portfolio-info">
+                                    <h4><a href="#">App 1</a></h4>
+                                    <p>App</p>
+                                    <div>
+                                        <a href="https://gitcdn.link/repo/studyhub-co/jupyterhub-templates/master/img/portfolio/app1.jpg"
+                                           data-lightbox="portfolio" data-title="App 1"
+                                           class="link-preview" title="Preview"><i class="ion ion-eye"></i></a>
+                                        <a href="#" class="link-details" title="More Details"><i
+                                                class="ion ion-android-open"></i></a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="col-lg-4 col-md-6 portfolio-item filter-web" data-wow-delay="0.1s">
+                            <div class="portfolio-wrap">
+                                <img src="https://gitcdn.link/repo/studyhub-co/jupyterhub-templates/master/img/portfolio/web3.jpg"
+                                     class="img-fluid" alt="">
+                                <div class="portfolio-info">
+                                    <h4><a href="#">Web 3</a></h4>
+                                    <p>Web</p>
+                                    <div>
+                                        <a href="https://gitcdn.link/repo/studyhub-co/jupyterhub-templates/master/img/portfolio/web3.jpg"
+                                           class="link-preview" data-lightbox="portfolio"
+                                           data-title="Web 3" title="Preview"><i class="ion ion-eye"></i></a>
+                                        <a href="#" class="link-details" title="More Details"><i
+                                                class="ion ion-android-open"></i></a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="col-lg-4 col-md-6 portfolio-item filter-app" data-wow-delay="0.2s">
+                            <div class="portfolio-wrap">
+                                <img src="https://gitcdn.link/repo/studyhub-co/jupyterhub-templates/master/img/portfolio/app2.jpg"
+                                     class="img-fluid" alt="">
+                                <div class="portfolio-info">
+                                    <h4><a href="#">App 2</a></h4>
+                                    <p>App</p>
+                                    <div>
+                                        <a href="https://gitcdn.link/repo/studyhub-co/jupyterhub-templates/master/img/portfolio/app2.jpg"
+                                           class="link-preview" data-lightbox="portfolio"
+                                           data-title="App 2" title="Preview"><i class="ion ion-eye"></i></a>
+                                        <a href="#" class="link-details" title="More Details"><i
+                                                class="ion ion-android-open"></i></a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="col-lg-4 col-md-6 portfolio-item filter-card">
+                            <div class="portfolio-wrap">
+                                <img src="https://gitcdn.link/repo/studyhub-co/jupyterhub-templates/master/img/portfolio/card2.jpg"
+                                     class="img-fluid" alt="">
+                                <div class="portfolio-info">
+                                    <h4><a href="#">Card 2</a></h4>
+                                    <p>Card</p>
+                                    <div>
+                                        <a href="https://gitcdn.link/repo/studyhub-co/jupyterhub-templates/master/img/portfolio/card2.jpg"
+                                           class="link-preview" data-lightbox="portfolio"
+                                           data-title="Card 2" title="Preview"><i class="ion ion-eye"></i></a>
+                                        <a href="#" class="link-details" title="More Details"><i
+                                                class="ion ion-android-open"></i></a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="col-lg-4 col-md-6 portfolio-item filter-web" data-wow-delay="0.1s">
+                            <div class="portfolio-wrap">
+                                <img src="https://gitcdn.link/repo/studyhub-co/jupyterhub-templates/master/img/portfolio/web2.jpg"
+                                     class="img-fluid" alt="">
+                                <div class="portfolio-info">
+                                    <h4><a href="#">Web 2</a></h4>
+                                    <p>Web</p>
+                                    <div>
+                                        <a href="https://gitcdn.link/repo/studyhub-co/jupyterhub-templates/master/img/portfolio/web2.jpg"
+                                           class="link-preview" data-lightbox="portfolio"
+                                           data-title="Web 2" title="Preview"><i class="ion ion-eye"></i></a>
+                                        <a href="#" class="link-details" title="More Details"><i
+                                                class="ion ion-android-open"></i></a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="col-lg-4 col-md-6 portfolio-item filter-app" data-wow-delay="0.2s">
+                            <div class="portfolio-wrap">
+                                <img src="https://gitcdn.link/repo/studyhub-co/jupyterhub-templates/master/img/portfolio/app3.jpg"
+                                     class="img-fluid" alt="">
+                                <div class="portfolio-info">
+                                    <h4><a href="#">App 3</a></h4>
+                                    <p>App</p>
+                                    <div>
+                                        <a href="https://gitcdn.link/repo/studyhub-co/jupyterhub-templates/master/img/portfolio/app3.jpg"
+                                           class="link-preview" data-lightbox="portfolio"
+                                           data-title="App 3" title="Preview"><i class="ion ion-eye"></i></a>
+                                        <a href="#" class="link-details" title="More Details"><i
+                                                class="ion ion-android-open"></i></a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="col-lg-4 col-md-6 portfolio-item filter-card">
+                            <div class="portfolio-wrap">
+                                <img src="https://gitcdn.link/repo/studyhub-co/jupyterhub-templates/master/img/portfolio/card1.jpg"
+                                     class="img-fluid" alt="">
+                                <div class="portfolio-info">
+                                    <h4><a href="#">Card 1</a></h4>
+                                    <p>Card</p>
+                                    <div>
+                                        <a href="https://gitcdn.link/repo/studyhub-co/jupyterhub-templates/master/img/portfolio/card1.jpg"
+                                           class="link-preview" data-lightbox="portfolio"
+                                           data-title="Card 1" title="Preview"><i class="ion ion-eye"></i></a>
+                                        <a href="#" class="link-details" title="More Details"><i
+                                                class="ion ion-android-open"></i></a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="col-lg-4 col-md-6 portfolio-item filter-card" data-wow-delay="0.1s">
+                            <div class="portfolio-wrap">
+                                <img src="https://gitcdn.link/repo/studyhub-co/jupyterhub-templates/master/img/portfolio/card3.jpg"
+                                     class="img-fluid" alt="">
+                                <div class="portfolio-info">
+                                    <h4><a href="#">Card 3</a></h4>
+                                    <p>Card</p>
+                                    <div>
+                                        <a href="https://gitcdn.link/repo/studyhub-co/jupyterhub-templates/master/img/portfolio/card3.jpg"
+                                           class="link-preview" data-lightbox="portfolio"
+                                           data-title="Card 3" title="Preview"><i class="ion ion-eye"></i></a>
+                                        <a href="#" class="link-details" title="More Details"><i
+                                                class="ion ion-android-open"></i></a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="col-lg-4 col-md-6 portfolio-item filter-web" data-wow-delay="0.2s">
+                            <div class="portfolio-wrap">
+                                <img src="https://gitcdn.link/repo/studyhub-co/jupyterhub-templates/master/img/portfolio/web1.jpg"
+                                     class="img-fluid" alt="">
+                                <div class="portfolio-info">
+                                    <h4><a href="#">Web 1</a></h4>
+                                    <p>Web</p>
+                                    <div>
+                                        <a href="https://gitcdn.link/repo/studyhub-co/jupyterhub-templates/master/img/portfolio/web1.jpg"
+                                           class="link-preview" data-lightbox="portfolio"
+                                           data-title="Web 1" title="Preview"><i class="ion ion-eye"></i></a>
+                                        <a href="#" class="link-details" title="More Details"><i
+                                                class="ion ion-android-open"></i></a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+
+                </div>
+            </section><!-- #portfolio -->
+
+            <!--==========================
+              Clients Section
+            ============================-->
+            <section id="testimonials" class="section-bg">
+                <div class="container">
+
+                    <header class="section-header">
+                        <h3>Testimonials</h3>
+                    </header>
+
+                    <div class="row justify-content-center">
+                        <div class="col-lg-8">
+
+                            <div class="owl-carousel testimonials-carousel wow fadeInUp">
+
+                                <div class="testimonial-item">
+                                    <img src="https://gitcdn.link/repo/studyhub-co/jupyterhub-templates/master/img/testimonial-1.jpg"
+                                         class="testimonial-img" alt="">
+                                    <h3>Saul Goodman</h3>
+                                    <h4>Ceo &amp; Founder</h4>
+                                    <p>
+                                        Proin iaculis purus consequat sem cure digni ssim donec porttitora entum
+                                        suscipit rhoncus. Accusantium quam, ultricies eget id, aliquam eget nibh et.
+                                        Maecen aliquam, risus at semper.
+                                    </p>
+                                </div>
+
+                                <div class="testimonial-item">
+                                    <img src="https://gitcdn.link/repo/studyhub-co/jupyterhub-templates/master/img/testimonial-2.jpg"
+                                         class="testimonial-img" alt="">
+                                    <h3>Sara Wilsson</h3>
+                                    <h4>Designer</h4>
+                                    <p>
+                                        Export tempor illum tamen malis malis eram quae irure esse labore quem cillum
+                                        quid cillum eram malis quorum velit fore eram velit sunt aliqua noster fugiat
+                                        irure amet legam anim culpa.
+                                    </p>
+                                </div>
+
+                                <div class="testimonial-item">
+                                    <img src="https://gitcdn.link/repo/studyhub-co/jupyterhub-templates/master/img/testimonial-3.jpg"
+                                         class="testimonial-img" alt="">
+                                    <h3>Jena Karlis</h3>
+                                    <h4>Store Owner</h4>
+                                    <p>
+                                        Enim nisi quem export duis labore cillum quae magna enim sint quorum nulla quem
+                                        veniam duis minim tempor labore quem eram duis noster aute amet eram fore quis
+                                        sint minim.
+                                    </p>
+                                </div>
+
+                                <div class="testimonial-item">
+                                    <img src="https://gitcdn.link/repo/studyhub-co/jupyterhub-templates/master/img/testimonial-4.jpg"
+                                         class="testimonial-img" alt="">
+                                    <h3>Matt Brandon</h3>
+                                    <h4>Freelancer</h4>
+                                    <p>
+                                        Fugiat enim eram quae cillum dolore dolor amet nulla culpa multos export minim
+                                        fugiat minim velit minim dolor enim duis veniam ipsum anim magna sunt elit fore
+                                        quem dolore labore illum veniam.
+                                    </p>
+                                </div>
+
+                                <div class="testimonial-item">
+                                    <img src="https://gitcdn.link/repo/studyhub-co/jupyterhub-templates/master/img/testimonial-5.jpg"
+                                         class="testimonial-img" alt="">
+                                    <h3>John Larson</h3>
+                                    <h4>Entrepreneur</h4>
+                                    <p>
+                                        Quis quorum aliqua sint quem legam fore sunt eram irure aliqua veniam tempor
+                                        noster veniam enim culpa labore duis sunt culpa nulla illum cillum fugiat legam
+                                        esse veniam culpa fore nisi cillum quid.
+                                    </p>
+                                </div>
+
+                            </div>
+
+                        </div>
+                    </div>
+
+
+                </div>
+            </section><!-- #testimonials -->
+
+            <!--==========================
+              Team Section
+            ============================-->
+            <section id="team">
+                <div class="container">
+                    <div class="section-header">
+                        <h3>Team</h3>
+                        <p>Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque</p>
+                    </div>
+
+                    <div class="row">
+
+                        <div class="col-lg-3 col-md-6 wow fadeInUp">
+                            <div class="member">
+                                <img src="https://gitcdn.link/repo/studyhub-co/jupyterhub-templates/master/img/team-1.jpg"
+                                     class="img-fluid" alt="">
+                                <div class="member-info">
+                                    <div class="member-info-content">
+                                        <h4>Walter White</h4>
+                                        <span>Chief Executive Officer</span>
+                                        <div class="social">
+                                            <a href=""><i class="fa fa-twitter"></i></a>
+                                            <a href=""><i class="fa fa-facebook"></i></a>
+                                            <a href=""><i class="fa fa-google-plus"></i></a>
+                                            <a href=""><i class="fa fa-linkedin"></i></a>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="col-lg-3 col-md-6 wow fadeInUp" data-wow-delay="0.1s">
+                            <div class="member">
+                                <img src="https://gitcdn.link/repo/studyhub-co/jupyterhub-templates/master/img/team-2.jpg"
+                                     class="img-fluid" alt="">
+                                <div class="member-info">
+                                    <div class="member-info-content">
+                                        <h4>Sarah Jhonson</h4>
+                                        <span>Product Manager</span>
+                                        <div class="social">
+                                            <a href=""><i class="fa fa-twitter"></i></a>
+                                            <a href=""><i class="fa fa-facebook"></i></a>
+                                            <a href=""><i class="fa fa-google-plus"></i></a>
+                                            <a href=""><i class="fa fa-linkedin"></i></a>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="col-lg-3 col-md-6 wow fadeInUp" data-wow-delay="0.2s">
+                            <div class="member">
+                                <img src="https://gitcdn.link/repo/studyhub-co/jupyterhub-templates/master/img/team-3.jpg"
+                                     class="img-fluid" alt="">
+                                <div class="member-info">
+                                    <div class="member-info-content">
+                                        <h4>William Anderson</h4>
+                                        <span>CTO</span>
+                                        <div class="social">
+                                            <a href=""><i class="fa fa-twitter"></i></a>
+                                            <a href=""><i class="fa fa-facebook"></i></a>
+                                            <a href=""><i class="fa fa-google-plus"></i></a>
+                                            <a href=""><i class="fa fa-linkedin"></i></a>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="col-lg-3 col-md-6 wow fadeInUp" data-wow-delay="0.3s">
+                            <div class="member">
+                                <img src="https://gitcdn.link/repo/studyhub-co/jupyterhub-templates/master/img/team-4.jpg"
+                                     class="img-fluid" alt="">
+                                <div class="member-info">
+                                    <div class="member-info-content">
+                                        <h4>Amanda Jepson</h4>
+                                        <span>Accountant</span>
+                                        <div class="social">
+                                            <a href=""><i class="fa fa-twitter"></i></a>
+                                            <a href=""><i class="fa fa-facebook"></i></a>
+                                            <a href=""><i class="fa fa-google-plus"></i></a>
+                                            <a href=""><i class="fa fa-linkedin"></i></a>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+
+                </div>
+            </section><!-- #team -->
+
+            <!--==========================
+              Clients Section
+            ============================-->
+            <section id="clients" class="section-bg">
+
+                <div class="container">
+
+                    <div class="section-header">
+                        <h3>Our CLients</h3>
+                        <p>Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque dere
+                            santome nida.</p>
+                    </div>
+
+                    <div class="row no-gutters clients-wrap clearfix wow fadeInUp">
+
+                        <div class="col-lg-3 col-md-4 col-xs-6">
+                            <div class="client-logo">
+                                <img src="https://gitcdn.link/repo/studyhub-co/jupyterhub-templates/master/img/clients/client-1.png"
+                                     class="img-fluid" alt="">
+                            </div>
+                        </div>
+
+                        <div class="col-lg-3 col-md-4 col-xs-6">
+                            <div class="client-logo">
+                                <img src="https://gitcdn.link/repo/studyhub-co/jupyterhub-templates/master/img/clients/client-2.png"
+                                     class="img-fluid" alt="">
+                            </div>
+                        </div>
+
+                        <div class="col-lg-3 col-md-4 col-xs-6">
+                            <div class="client-logo">
+                                <img src="https://gitcdn.link/repo/studyhub-co/jupyterhub-templates/master/img/clients/client-3.png"
+                                     class="img-fluid" alt="">
+                            </div>
+                        </div>
+
+                        <div class="col-lg-3 col-md-4 col-xs-6">
+                            <div class="client-logo">
+                                <img src="https://gitcdn.link/repo/studyhub-co/jupyterhub-templates/master/img/clients/client-4.png"
+                                     class="img-fluid" alt="">
+                            </div>
+                        </div>
+
+                        <div class="col-lg-3 col-md-4 col-xs-6">
+                            <div class="client-logo">
+                                <img src="https://gitcdn.link/repo/studyhub-co/jupyterhub-templates/master/img/clients/client-5.png"
+                                     class="img-fluid" alt="">
+                            </div>
+                        </div>
+
+                        <div class="col-lg-3 col-md-4 col-xs-6">
+                            <div class="client-logo">
+                                <img src="https://gitcdn.link/repo/studyhub-co/jupyterhub-templates/master/img/clients/client-6.png"
+                                     class="img-fluid" alt="">
+                            </div>
+                        </div>
+
+                        <div class="col-lg-3 col-md-4 col-xs-6">
+                            <div class="client-logo">
+                                <img src="https://gitcdn.link/repo/studyhub-co/jupyterhub-templates/master/img/clients/client-7.png"
+                                     class="img-fluid" alt="">
+                            </div>
+                        </div>
+
+                        <div class="col-lg-3 col-md-4 col-xs-6">
+                            <div class="client-logo">
+                                <img src="https://gitcdn.link/repo/studyhub-co/jupyterhub-templates/master/img/clients/client-8.png"
+                                     class="img-fluid" alt="">
+                            </div>
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </section>
+
+            <!--==========================
+              Contact Section
+            ============================-->
+            <section id="contact">
+                <div class="container-fluid">
+
+                    <div class="section-header">
+                        <h3>Contact Us</h3>
+                    </div>
+
+                    <div class="row wow fadeInUp">
+
+                        <div class="col-lg-6">
+                            <div class="map mb-4 mb-lg-0">
+                                <iframe src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d6042.718825476946!2d-73.979775!3d40.776112!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x89c2588b1c8b8471%3A0xb8c8f6c5f2392349!2sW+70th+St+%26+Columbus+Ave%2C+New+York%2C+NY+10023!5e0!3m2!1sen!2sus!4v1566438067646!5m2!1sen!2sus"
+                                        frameborder="0" style="border:0; width: 100%; height: 312px;"
+                                        allowfullscreen></iframe>
+                            </div>
+                        </div>
+
+                        <div class="col-lg-6">
+                            <div class="row">
+                                <div class="col-md-5 info">
+                                    <i class="ion-ios-location-outline"></i>
+                                    <p>5</p>
+                                </div>
+                                <div class="col-md-4 info">
+                                    <i class="ion-ios-email-outline"></i>
+                                    <p>nscozzaro@gmail.com</p>
+                                </div>
+                                <div class="col-md-3 info">
+                                    <i class="ion-ios-telephone-outline"></i>
+                                    <p>(805) 698-0457</p>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+
+                </div>
+            </section><!-- #contact -->
+
+        </main>
+
+        <!--==========================
+          Footer
+        ============================-->
+        <footer id="footer">
+            <div class="footer-top">
+                <div class="container">
+                    <div class="row">
+
+                        <div class="col-lg-4 col-md-6 footer-info">
+                            <h3>NewBiz</h3>
+                            <p>Cras fermentum odio eu feugiat lide par naso tierra. Justo eget nada terra videa magna
+                                derita valies darta donna mare fermentum iaculis eu non diam phasellus. Scelerisque
+                                felis imperdiet proin fermentum leo. Amet volutpat consequat mauris nunc congue.</p>
+                        </div>
+
+                        <div class="col-lg-2 col-md-6 footer-links">
+                            <h4>Useful Links</h4>
+                            <ul>
+                                <li><a href="#">Home</a></li>
+                                <li><a href="#">About us</a></li>
+                                <li><a href="#">Services</a></li>
+                                <li><a href="#">Terms of service</a></li>
+                                <li><a href="#">Privacy policy</a></li>
+                            </ul>
+                        </div>
+
+                        <div class="col-lg-3 col-md-6 footer-contact">
+                            <h4>Contact Us</h4>
+                            <p>
+                                A108 Adam Street <br>
+                                New York, NY 535022<br>
+                                United States <br>
+                                <strong>Phone:</strong> +1 5589 55488 55<br>
+                                <strong>Email:</strong> info@example.com<br>
+                            </p>
+
+                            <div class="social-links">
+                                <a href="#" class="twitter"><i class="fa fa-twitter"></i></a>
+                                <a href="#" class="facebook"><i class="fa fa-facebook"></i></a>
+                                <a href="#" class="instagram"><i class="fa fa-instagram"></i></a>
+                                <a href="#" class="google-plus"><i class="fa fa-google-plus"></i></a>
+                                <a href="#" class="linkedin"><i class="fa fa-linkedin"></i></a>
+                            </div>
+
+                        </div>
+
+                        <div class="col-lg-3 col-md-6 footer-newsletter">
+                            <h4>Our Newsletter</h4>
+                            <p>Tamen quem nulla quae legam multos aute sint culpa legam noster magna veniam enim veniam
+                                illum dolore legam minim quorum culpa amet magna export quem marada parida nodela
+                                caramase seza.</p>
+                            <form action="" method="post">
+                                <input type="email" name="email"><input type="submit" value="Subscribe">
+                            </form>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+
+            <div class="container">
+                <div class="copyright">
+                    &copy; Copyright <strong>NewBiz</strong>. All Rights Reserved
+                </div>
+                <div class="credits">
+                    <!--
+                      All the links in the footer should remain intact.
+                      You can delete the links only if you purchased the pro version.
+                      Licensing information: https://bootstrapmade.com/license/
+                      Purchase the pro version with working PHP/AJAX contact form: https://bootstrapmade.com/buy/?theme=NewBiz
+                    -->
+                    Designed by <a href="https://bootstrapmade.com/">BootstrapMade</a>
+                </div>
+            </div>
+        </footer><!-- #footer -->
+
+        <a href="#" class="back-to-top"><i class="fa fa-chevron-up"></i></a>
+    </div>
 {% endblock %}
 
 {% block script %}
-{{ super() }}
-<script>
-if (window.location.protocol === "http:") {
-  // unhide http warning
-  var warning = document.getElementById('insecure-login-warning');
-  warning.className = warning.className.replace(/\bhidden\b/, '');
-}
-</script>
+    {{ super() }}
+    <script>
+        if (window.location.protocol === "http:") {
+            // unhide http warning
+            var warning = document.getElementById('insecure-login-warning');
+            {#warning.className = warning.className.replace(/\bhidden\b/, '');#}
+        }
+    </script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <!-- JavaScript Libraries -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-migrate/3.1.0/jquery-migrate.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.3.1/js/bootstrap.bundle.min.js"></script>
+    <script src='http://ajax.googleapis.com/ajax/libs/jqueryui/1.8.5/jquery-ui.min.js'></script>
+    {#    <script src="lib/mobile-nav/mobile-nav.js"></script>#}
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/wow/1.1.2/wow.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/waypoints/4.0.1/jquery.waypoints.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Counter-Up/1.0.0/jquery.counterup.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/owl.carousel.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.isotope/3.0.5/isotope.pkgd.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/lightbox2/2.11.1/js/lightbox.min.js"></script>
 
+    <!-- Template Main Javascript File -->
+    <script type="text/javascript">
+        (function ($) {
+            "use strict";
+
+            // Preloader (if the #preloader div exists)
+            $(window).on('load', function () {
+                if ($('#preloader').length) {
+                    $('#preloader').delay(100).fadeOut('slow', function () {
+                        $(this).remove();
+                    });
+                }
+            });
+
+            // Back to top button
+            $(window).scroll(function () {
+                if ($(this).scrollTop() > 100) {
+                    $('.back-to-top').fadeIn('slow');
+                } else {
+                    $('.back-to-top').fadeOut('slow');
+                }
+            });
+            $('.back-to-top').click(function () {
+                $('html, body').animate({scrollTop: 0}, 1500, 'easeInOutExpo');
+                return false;
+            });
+
+            // Initiate the wowjs animation library
+            new WOW().init();
+
+            // Header scroll class
+            $(window).scroll(function () {
+                if ($(this).scrollTop() > 100) {
+                    $('#header').addClass('header-scrolled');
+                } else {
+                    $('#header').removeClass('header-scrolled');
+                }
+            });
+
+            if ($(window).scrollTop() > 100) {
+                $('#header').addClass('header-scrolled');
+            }
+
+            // Smooth scroll for the navigation and links with .scrollto classes
+            $('.main-nav a, .mobile-nav a, .scrollto').on('click', function () {
+                if (location.pathname.replace(/^\//, '') == this.pathname.replace(/^\//, '') && location.hostname == this.hostname) {
+                    var target = $(this.hash);
+                    if (target.length) {
+                        var top_space = 0;
+
+                        if ($('#header').length) {
+                            top_space = $('#header').outerHeight();
+
+                            if (!$('#header').hasClass('header-scrolled')) {
+                                top_space = top_space - 20;
+                            }
+                        }
+
+                        $('html, body').animate({
+                            scrollTop: target.offset().top - top_space
+                        }, 1500, 'easeInOutExpo');
+
+                        if ($(this).parents('.main-nav, .mobile-nav').length) {
+                            $('.main-nav .active, .mobile-nav .active').removeClass('active');
+                            $(this).closest('li').addClass('active');
+                        }
+
+                        if ($('body').hasClass('mobile-nav-active')) {
+                            $('body').removeClass('mobile-nav-active');
+                            $('.mobile-nav-toggle i').toggleClass('fa-times fa-bars');
+                            $('.mobile-nav-overly').fadeOut();
+                        }
+                        return false;
+                    }
+                }
+            });
+
+            // Navigation active state on scroll
+            var nav_sections = $('section');
+            var main_nav = $('.main-nav, .mobile-nav');
+            var main_nav_height = $('#header').outerHeight();
+
+            $(window).on('scroll', function () {
+                var cur_pos = $(this).scrollTop();
+
+                nav_sections.each(function () {
+                    var top = $(this).offset().top - main_nav_height,
+                        bottom = top + $(this).outerHeight();
+
+                    if (cur_pos >= top && cur_pos <= bottom) {
+                        main_nav.find('li').removeClass('active');
+                        main_nav.find('a[href="#' + $(this).attr('id') + '"]').parent('li').addClass('active');
+                    }
+                });
+            });
+
+            // jQuery counterUp (used in Whu Us section)
+            $('[data-toggle="counter-up"]').counterUp({
+                delay: 10,
+                time: 1000
+            });
+
+            // Porfolio isotope and filter
+            $(window).on('load', function () {
+                var portfolioIsotope = $('.portfolio-container').isotope({
+                    itemSelector: '.portfolio-item'
+                });
+                $('#portfolio-flters li').on('click', function () {
+                    $("#portfolio-flters li").removeClass('filter-active');
+                    $(this).addClass('filter-active');
+
+                    portfolioIsotope.isotope({filter: $(this).data('filter')});
+                });
+            });
+
+            // Testimonials carousel (uses the Owl Carousel library)
+            $(".testimonials-carousel").owlCarousel({
+                autoplay: true,
+                dots: true,
+                loop: true,
+                items: 1
+            });
+
+        })(jQuery);
+
+
+    </script>
 {% endblock %}
