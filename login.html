@@ -2,6 +2,15 @@
 
 {% block stylesheet %}
     {{ super() }}
+     <!-- Bootstrap CSS File -->
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- Libraries CSS Files -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.7.2/animate.min.css" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/ionicons/2.0.0/css/ionicons.min.css" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/assets/owl.carousel.min.css" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/lightbox2/2.11.1/css/lightbox.min.css" rel="stylesheet">
     <style>
         #jupyterhub-logo {
             padding-left: 0px;
@@ -1481,6 +1490,7 @@
             }
         }
     </style>
+
 {% endblock %}
 {% if announcement_login %}
     {% set announcement = announcement_login %}
@@ -1563,9 +1573,9 @@
                 </div>
 
                 <div class="intro-info">
-                    <h2>We provide<br><span>solutions</span><br>for your business!</h2>
+                    <h2>We are providing the first<br><span>publicly-available, free</span><br>JupyterHub!</h2>
                     <div>
-                        <a href="#about" class="btn-get-started scrollto">Get Started</a>
+                        <a href="#about" class="btn-get-started scrollto">About Us</a>
                         <a href="#services" class="btn-services scrollto">Our Services</a>
                     </div>
                 </div>
@@ -1583,17 +1593,17 @@
 
                     <header class="section-header">
                         <h3>About Us</h3>
-                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut
-                            labore et dolore magna aliqua.</p>
+                        <p> We are passionate about the Project Jupyter ecosystem, and are launching a service that
+                            provides a free, publicly-available JupyterHub.
+                            </p>
                     </header>
 
                     <div class="row about-container">
 
                         <div class="col-lg-6 content order-lg-1 order-2">
                             <p>
-                                Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor
-                                incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud
-                                exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
+                                This site runs on Google Cloud Platform using Kubernetes which orchestrates launching
+                                a
                             </p>
 
                             <div class="icon-box wow fadeInUp">
@@ -2416,7 +2426,7 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/Counter-Up/1.0.0/jquery.counterup.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/owl.carousel.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.isotope/3.0.5/isotope.pkgd.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/lightbox2/2.11.1/js/lightbox.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/lightbox2/2.11.1/js/lightbox.min.js"></script>kubectl delete namespace
 
     <!-- Template Main Javascript File -->
     <script type="text/javascript">
