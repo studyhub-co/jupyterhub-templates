@@ -45,12 +45,11 @@
     <link href="https://gitcdn.link/repo/studyhub-co/jupyterhub-templates/master/img/web_hi_res_512.png"
           rel="apple-touch-icon">
 
-    <!-- Google Fonts -->
-    <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,700,700i|Montserrat:300,400,500,700"
-          rel="stylesheet">
-
     {% block stylesheet %}
         <link rel="stylesheet" href="{{ static_url("css/style.min.css") }}" type="text/css"/>
+        <!-- Google Fonts -->
+        <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,700,700i|Montserrat:300,400,500,700"
+              rel="stylesheet">
         <link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet" type="text/css">
     {% endblock %}
     <!-- Global site tag (gtag.js) - Google Analytics -->
@@ -139,7 +138,7 @@
                     </span>
                 {% endblock %}
                 <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#thenavbar"
-                        aria-expanded="false">
+                        aria-expanded="false" id="hamburger">
                     <span class="sr-only">Toggle navigation</span>
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
