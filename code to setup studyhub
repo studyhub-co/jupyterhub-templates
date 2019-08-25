@@ -1,0 +1,48 @@
+(Or f1-micro)
+gcloud container clusters create --machine-type n1-standard-2 --num-nodes 1 --zone us-central1-b --cluster-version latest studyhub
+
+kubectl create clusterrolebinding cluster-admin-binding --clusterrole=cluster-admin --user=nscozzaro1@gmail.com
+
+(if not installed one time)
+curl https://raw.githubusercontent.com/kubernetes/helm/master/scripts/get | bash
+
+kubectl --namespace kube-system create serviceaccount tiller
+
+kubectl create clusterrolebinding tiller --clusterrole cluster-admin --serviceaccount=kube-system:tiller
+
+helm init --service-account tiller --wait
+
+kubectl patch deployment tiller-deploy --namespace=kube-system --type=json --patch='[{"op": "add", "path": "/spec/template/spec/containers/0/command", "value": ["/tiller", "--listen=localhost:44134"]}]'
+
+#config.yaml
+
+proxy:
+  secretToken: "XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX"
+auth:
+  type: google
+  admin:
+    access: true
+    users:
+      - nscozzaro
+  google:
+    clientId: "39185847030-72o8qt2eaar4bb6ddhgv28kgqauu0uib.apps.googleusercontent.com"
+    clientSecret: "XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX"
+    callbackUrl: "https://studyhub.co/hub/oauth_callback"
+    hostedDomain: "studyhub.co"
+    loginService: "Google"
+
+helm repo add jupyterhub https://jupyterhub.github.io/helm-chart/
+helm repo update
+
+#RELEASE=jhub
+#NAMESPACE=jhub
+helm upgrade --install jhub jupyterhub/jupyterhub --namespace jhub --version=0.9-470ec04 --values config.yaml
+
+(to get ip address)
+kubectl get service --namespace jhub
+
+Tearing down
+
+helm delete jhub --purge
+kubectl delete namespace jhub
+gcloud container clusters delete studyhub --zone=us-central1-b
